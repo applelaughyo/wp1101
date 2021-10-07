@@ -49,3 +49,21 @@ body{
 .fPhoto:hover{
     opacity: 0
 }
+#SpongeBob {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    float: left;
+    /* animation 參數設定 */
+    animation-name: MoveToRight;    /*動畫名稱，需與 keyframe 名稱對應*/
+    animation-duration: 8s;    /*動畫持續時間，單位為秒*/
+    animation-delay: 2s;    /*動畫延遲開始時間*/
+    animation-iteration-count: infinite;    /*動畫次數，infinite 為無限次*/    
+}
+@keyframes MoveToRight {
+    from { left: 0; }
+    to { left: 80%; }
+}
+#SpongeBob:hover{
+    transform: scale(1.2);
+}
