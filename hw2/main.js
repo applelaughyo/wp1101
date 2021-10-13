@@ -45,22 +45,47 @@ function Theme(front_images , back_images , title , GTI ,BTI){
 }
 var spongeBob = new Theme(SB_front_images ,SB_back_images , SB_title , SB_GTI,SB_BTI);
 var dog = new Theme(Dog_front_images , Dog_back_images , Dog_title,Dog_GTI,Dog_BTI);
+var myThemeArray =[spongeBob , dog]
+
+
+
+//main function start
+setTheme(myThemeArray[0]);
+// main function end
 
 
 
 
 
-setTheme(spongeBob);
-selectTheme(document.getElementsByClassName("themePhoto")[0]);
 
 
 
 
 function setTheme(theme){
+    themeSelected(theme);
+    setTitle(theme);
+    setItem(theme);
+}
+
+function themeSelected(theme){
+    for(i=0;i<themeCnt;i++){
+        let myThemeIcon = document.getElementsByClassName("themePhoto")[i];
+        if(myThemeArray[i] === theme){
+            myThemeIcon.classList.add("selected");
+            myThemeIcon.src = theme.GTI;
+        }
+        else{
+            myThemeIcon.classList.remove("selected");
+            myThemeIcon.src = myThemeArray[i].BTI;
+        }
+    }
+}
+function setTitle(theme){
     let myTitle = document.getElementsByClassName("myTitle")[0];
     let myTitleP = myTitle.getElementsByTagName("p")[0];
     myTitleP.innerHTML = theme.title;
-    
+}
+function setItem(theme){
     for(i=0;i<itemCnt;i++){
         let myItem = document.getElementsByClassName("item")[i];
         let displayImg = myItem.getElementsByTagName("img")[0];
@@ -88,18 +113,6 @@ function setTheme(theme){
             }
         )
     }
-}
-function selectTheme(myThemeIcon){
-    for(i=0;i<themeCnt;i++){
-        if(document.getElementsByClassName("themePhoto")[i] === myThemeIcon){
-            document.getElementsByClassName("themePhoto")[i].classList.add("selected");
-        }
-        else{
-            document.getElementsByClassName("themePhoto")[i].classList.remove("selected");
-        }
-        //document.getElementsByClassName("themePhoto")[i].classList.remove("disabled");
-    }
-    //myThemeIcon.classList.add("disabled");
 }
 
 
