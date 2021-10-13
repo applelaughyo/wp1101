@@ -51,6 +51,7 @@ var dog = new Theme(Dog_front_images , Dog_back_images , Dog_title,Dog_GTI,Dog_B
 
 
 setTheme(spongeBob);
+selectTheme(document.getElementsByClassName("themePhoto")[0]);
 
 
 
@@ -90,10 +91,14 @@ function setTheme(theme){
 }
 function selectTheme(myThemeIcon){
     for(i=0;i<themeCnt;i++){
-        document.getElementsByClassName("themePhoto")[i].classList.remove("selected");
+        if(document.getElementsByClassName("themePhoto")[i] === myThemeIcon){
+            document.getElementsByClassName("themePhoto")[i].classList.add("selected");
+        }
+        else{
+            document.getElementsByClassName("themePhoto")[i].classList.remove("selected");
+        }
         //document.getElementsByClassName("themePhoto")[i].classList.remove("disabled");
     }
-    myThemeIcon.classList.add("selected");
     //myThemeIcon.classList.add("disabled");
 }
 
