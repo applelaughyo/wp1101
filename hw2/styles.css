@@ -1,0 +1,141 @@
+body {
+    height: 100%;
+    box-sizing: border-box;
+    background: #f8f1e5;
+}
+.themeContainer{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width: 100px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:rgb(255, 192, 203,0.8);
+    border:double black;
+    align-self: center;
+    text-align:center;
+    z-index: 2;
+}
+.themeContainer p{
+    color: #000000;
+    font-size:20px;
+    font-weight: 500;
+    -webkit-text-stroke: 1px black;
+    -webkit-text-fill-color: blue;
+}
+.themeItem{
+    position: relative;
+    border: double black 3px;
+    width: 80px;
+    height: 80px;
+    background-color: hsl(135, 68%, 35% , 0.5);
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    overflow:hidden;
+}
+.themePhoto{
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px; left: 0px;
+    transition: all 1s ease-out;
+}
+.selected{
+    border:solid gold 5px;
+}
+.themePhoto:hover{
+    border:double black 2px;
+}
+
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: hsla(41, 82%, 37%, 0.5);
+    /* 對齊主軸*/
+    justify-content: center;
+    /* 對齊交錯軸*/
+    align-items: center;
+
+}
+.myTitle{
+    /* position:sticky;
+    top:0px; */
+    width: 1000px;
+    margin: 0px auto;
+    background-color: gold;
+    border:3px #000000 solid;
+    float:inline-start;
+    text-align:center;
+    z-index: 2;
+}
+.myTitle p{
+    color: #000000;
+    font-size:40px;
+    font-weight: 800;
+    -webkit-text-stroke: 3px black;
+    -webkit-text-fill-color: transparent;
+}
+.itemContainer{
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: hsl(135, 68%, 35% , 0.5);
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.item {
+    position: relative;
+    border: double #5B6DCD 10px;
+    width: 25%;
+    height: 250px;
+    background-color: hsl(135, 68%, 35% , 0.5);
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    overflow:hidden;
+}
+.item button{
+    border:3px rgb(0, 0, 0) double;
+    background-color:gray;
+    align-self: flex-end;
+    bottom: 30px;
+    -webkit-text-stroke: 0.1px black;
+    color: honeydew;
+}
+.item button:hover{
+    border:3px rgb(255, 0, 0) double;
+}
+.photo{
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    top: 0px; left: 0px;
+    transition: all 1s ease-out;
+}
+.photo:hover{
+    transform:scale(1.2,1.2);
+}
+.disabled {
+    opacity: 0.2;
+}
+  
+.disabled:hover {
+    border-color: transparent !important;
+    cursor: not-allowed;
+}
