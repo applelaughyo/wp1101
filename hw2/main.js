@@ -30,8 +30,24 @@ const Dog_back_images = ["Dog/不可以色色.png",
                     "Dog/為甚麼不可以色色.jpg",
                     "Dog/我承受著這個年齡不該有的機智和帥氣.jpg"]
 
+const IAmTrash_title = "Welcome to I Am Trash Website!!!";
+const IAmTrash_GTI = "ThemeIcon/IAmTrashGood.png";
+const IAmTrash_BTI = "ThemeIcon/IAmTrashBad.png";
+const IAmTrash_front_images = ["IAmTrash/我就爛.png",
+                                "IAmTrash/別當機掰人.png",
+                                "IAmTrash/直到遇見你.png" ,
+                                "IAmTrash/給我等一下.png",
+                                "IAmTrash/除了給讚.png",
+                                "IAmTrash/空.png"]
+const IAmTrash_back_images = ["IAmTrash/你也爛.jpg",
+                                "IAmTrash/要爛一起爛.png",
+                                "IAmTrash/因為你實在太爛了.png",
+                                "IAmTrash/你們都很爛.png",
+                                "IAmTrash/我不知道該說什麼了.png",
+                                "IAmTrash/我就沒梗.png"]
+
 const itemCnt = 6;
-const themeCnt = 2;
+const themeCnt = 3;
 
 
 
@@ -45,7 +61,8 @@ function Theme(front_images , back_images , title , GTI ,BTI){
 }
 var spongeBob = new Theme(SB_front_images ,SB_back_images , SB_title , SB_GTI,SB_BTI);
 var dog = new Theme(Dog_front_images , Dog_back_images , Dog_title,Dog_GTI,Dog_BTI);
-var myThemeArray =[spongeBob , dog]
+var iAmTrash = new Theme(IAmTrash_front_images, IAmTrash_back_images , IAmTrash_title,IAmTrash_GTI , IAmTrash_BTI);
+var myThemeArray =[spongeBob , dog , iAmTrash];
 
 
 

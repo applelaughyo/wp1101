@@ -9,14 +9,20 @@
 
 <body>
     <div class = "themeContainer">
-        
-            <p>Theme</p>
-        
-        <div class = "themeItem">
-            <img src=""  class = "themePhoto" onclick = "setTheme(spongeBob)" alt="一張圖片">
-        </div>
-        <div class = "themeItem">
-            <img src=""  class = themePhoto onclick = "setTheme(dog)" alt="一張圖片">
+        <p>Theme</p>
+        <div class="themeIconContainer">
+            <div class = "themeItem">
+                <img src=""  class = "themePhoto" onclick = "setTheme(spongeBob)" alt="一張圖片">
+            </div>
+            <div class = "themeItem">
+                <img src=""  class = themePhoto onclick = "setTheme(dog)" alt="一張圖片">
+            </div>
+            <div class = "themeItem">
+                <img src=""  class = themePhoto onclick = "setTheme(iAmTrash)" alt="一張圖片">
+            </div>
+            <div class = "themeItem">
+                <img src="空主題.png"  class = themePhoto onclick="alert('我是一個沒用的空主題\n不要點我，讓我安靜地在這耍笨。');" alt="一張圖片">
+            </div>
         </div>
     </div>
     <div class="container">
@@ -54,6 +60,10 @@
                 <button>click me!</button>
                 <button>reset</button>
             </div>
+        </div>
+        <div class="annotation">
+            <p>ThemeCount:3</p>
+            <p>ItemCount:6</p>
         </div>
     </div>
     <script src="main.js"></script>

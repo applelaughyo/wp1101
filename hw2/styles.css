@@ -7,16 +7,24 @@ body {
     position:fixed;
     top:0px;
     left:0px;
-    width: 100px;
+    width: 120px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color:rgb(255, 192, 203,0.8);
+    border:double black;
+    text-align:center;
+    z-index: 2;
+}
+.themeIconContainer{
+    width: 120px;
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     background-color:rgb(255, 192, 203,0.8);
-    border:double black;
-    align-self: center;
-    text-align:center;
-    z-index: 2;
+    overflow-y:auto;
 }
 .themeContainer p{
     color: #000000;
@@ -35,6 +43,7 @@ body {
     display: flex;
     justify-content: center;
     overflow:hidden;
+    flex-shrink: 0;
 }
 .themePhoto{
     box-sizing: border-box;
@@ -138,4 +147,24 @@ body {
 .disabled:hover {
     border-color: transparent !important;
     cursor: not-allowed;
+}
+
+.annotation{
+    position:fixed;
+    flex-direction: row;
+    flex-wrap: wrap;
+    bottom:0px;
+    left:0px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    background-color: black;
+    border:double gold;
+    text-align:center;
+    z-index: 2;
+}
+.annotation p{
+    color: white;
+    font-size:15px;
+    font-weight: 500;
 }
