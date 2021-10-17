@@ -47,107 +47,230 @@ const IAmTrash_back_images = ["IAmTrash/你也爛.jpg",
                                 "IAmTrash/我就沒梗.png"]
 
 
-const themeCnt = 3;
 
 
-
-
-function Theme(front_images , back_images , title , GTI ,BTI , itemCnt){
-    this.fImg = front_images;
-    this.bImg = back_images;
-    this.title = title;
-    this.GTI = GTI;
-    this.BTI = BTI;
-    this.itemCnt = itemCnt;
+class Theme{
+    constructor(name , front_images , back_images , title , GTI ,BTI , itemCnt){
+        this.name = name;
+        this.fImg = front_images;
+        this.bImg = back_images;
+        this.title = title;
+        this.GTI = GTI;
+        this.BTI = BTI;
+        this.itemCnt = itemCnt;
+    }
 }
-var spongeBob = new Theme(SB_front_images ,SB_back_images , SB_title , SB_GTI,SB_BTI , SB_front_images.length);
-var dog = new Theme(Dog_front_images , Dog_back_images , Dog_title,Dog_GTI, Dog_BTI, Dog_front_images.length);
-var iAmTrash = new Theme(IAmTrash_front_images, IAmTrash_back_images , IAmTrash_title,IAmTrash_GTI , IAmTrash_BTI ,IAmTrash_front_images.length);
+class ThemeItem {
+    constructor(theme){
+        this.node = document.createElement("div");
+        this.node.classList.add("themeItem");
+        let img = document.createElement("img");
+        img.src = theme.BTI;
+        img.classList.add("themePhoto");
+        img.alt = "一張圖片";
+        img.id = theme.name;
+        this.node.appendChild(img);
+    }
+    get TINode() {
+        return this.node;
+    }
+}
+
+class Item{
+    constructor(theme , index) {
+        this.node = document.createElement("div");
+        this.node.classList.add("item");
+        let img = document.createElement("img");
+        img.src = theme.fImg[index];
+        img.classList.add("photo");
+        img.alt = "一張圖片";
+        this.node.appendChild(img);
+        let button = document.createElement("button");
+        button.innerHTML = "click me !!!";
+        button.onclick = function(){
+            img.src = theme.bImg[index];
+            button.classList.add("disabled");
+            resetButton.classList.remove("disabled");
+        };
+        this.node.appendChild(button);
+        let resetButton = document.createElement("button");
+        resetButton.innerHTML = "reset";
+        resetButton.classList.add("disabled");
+        resetButton.onclick = function(){
+            img.src = theme.fImg[index];
+            button.classList.remove("disabled");
+            resetButton.classList.add("disabled");
+        };
+        this.node.appendChild(resetButton);
+        let deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "delete";
+        this.node.appendChild(deleteButton);
+        deleteButton.onclick = function(){
+            cur_Theme.itemCnt--;
+            curItemCnt--;
+            setAnnotation();
+            this.parentNode.parentNode.removeChild(this.parentNode);     
+        };
+    }
+    get ItemNode() {
+          return this.node;
+    }
+}
+
+
+
+
+
+var spongeBob = new Theme("SpongeBob",SB_front_images ,SB_back_images , SB_title , SB_GTI,SB_BTI , SB_front_images.length);
+var dog = new Theme("Doge",Dog_front_images , Dog_back_images , Dog_title,Dog_GTI, Dog_BTI, Dog_front_images.length);
+var iAmTrash = new Theme("I Am Trash",IAmTrash_front_images, IAmTrash_back_images , IAmTrash_title,IAmTrash_GTI , IAmTrash_BTI ,IAmTrash_front_images.length);
 var myThemeArray =[spongeBob , dog , iAmTrash];
 
 
 
+const themeCnt = 3;
+var curItemCnt  = 0;
+var cur_Theme = myThemeArray[0];
+
+
+
+
+
+
+
+
+
+
+
+
 //main function start
-setTheme(myThemeArray[0]);
+setThemeIconContainer();
+for(let i = 0; i < themeCnt;i++){
+    let themeIcon = document.getElementsByClassName("themePhoto")[i];
+    themeIcon.addEventListener(
+        "click",
+        function() {
+            setContainer(myThemeArray[i]);
+            themeSelected(myThemeArray[i]);
+        }
+    );
+}
+setEmptyThemeIcon();
+setContainer(myThemeArray[0]);
+themeSelected(myThemeArray[0]);
 // main function end
 
 
 
-
-
-
-
-
-
-function setTheme(theme){
-    themeSelected(theme);
-    setTitle(theme);
-    setItem(theme);
+function setThemeIconContainer(){
+    for(let i = 0; i < myThemeArray.length;i++){
+        let themeIconContainerNode = document.getElementById("themeIconContainer");
+        let themeItemNode = new ThemeItem(myThemeArray[i]).TINode;
+        themeIconContainerNode.appendChild(themeItemNode);
+    }
 }
+function setEmptyThemeIcon(){
+    let themeIconContainerNode = document.getElementById("themeIconContainer");
+    let emptyTheme = document.createElement("div");
+    emptyTheme.classList.add("themeItem");
+    let img = document.createElement("img");
+    img.src = "空主題.png";
+    img.classList.add("themePhoto");
+    img.alt = "一張圖片";
+    img.id = "emptyTheme";
+    emptyTheme.appendChild(img);
+    themeIconContainerNode.appendChild(emptyTheme);
+    img.addEventListener(
+        "click",
+        function() {
+            alert("慘了被發現了:(\n我是一個沒用的空主題\n不要點我，讓我安靜地在這耍笨。")
+        }
+    );
+}
+
+function　setContainer(theme){
+    cur_Theme = theme;
+    let myTitleNode = document.getElementById("myTitle");
+    let p_new = document.createElement("p");
+    p_new.innerHTML = `Welcome To ${theme.name} Website !!!`;
+    myTitleNode.replaceChild(p_new , myTitleNode.firstChild);
+    setItemContainer(theme);
+    setAnnotation();
+}
+
+function setItemContainer(theme){
+    let itemContainerNode = document.getElementById("itemContainer");
+    clearNode(itemContainerNode);
+    curItemCnt = 0;
+    for(let i = 0; i < theme.itemCnt;i++){
+        curItemCnt++;
+        let itemNode = new Item(theme , i).ItemNode;
+        itemContainerNode.appendChild(itemNode);
+    }
+}
+function setAnnotation(){
+    let annotationNode = document.getElementById("annotation");
+    p_new = document.createElement("p");
+    let totalItemCnt = 0;
+    for(let i = 0; i < themeCnt;i++){
+        totalItemCnt +=myThemeArray[i].itemCnt;
+    }
+    p_new.innerHTML = `Current theme: ${cur_Theme.name}<br><br>ItemCount:${cur_Theme.itemCnt}<br><br>TotalItemCount:${totalItemCnt}`;
+    annotationNode.replaceChild(p_new , annotationNode.firstChild);
+}
+
+
 
 function themeSelected(theme){
-    for(i=0;i<themeCnt;i++){
-        let myThemeIcon = document.getElementsByClassName("themePhoto")[i];
+    cur_Theme = theme;
+    for(let i = 0; i < themeCnt ;i++){
+        let themeIcon = document.getElementsByClassName("themePhoto")[i];
         if(myThemeArray[i] === theme){
-            myThemeIcon.classList.add("selected");
-            myThemeIcon.src = theme.GTI;
+            themeIcon.classList.add("selected");
+            themeIcon.src = myThemeArray[i].GTI;
         }
         else{
-            myThemeIcon.classList.remove("selected");
-            myThemeIcon.src = myThemeArray[i].BTI;
+            themeIcon.classList.remove("selected");
+            themeIcon.src = myThemeArray[i].BTI;
         }
     }
 }
-function setTitle(theme){
-    let myTitle = document.getElementsByClassName("myTitle")[0];
-    let myTitleP = myTitle.getElementsByTagName("p")[0];
-    myTitleP.innerHTML = theme.title;
-}
-function setItem(theme){
-    for(i=0;i<theme.itemCnt;i++){
-        let myItem = document.getElementsByClassName("item")[i];
-        let displayImg = myItem.getElementsByTagName("img")[0];
-        let button = myItem.getElementsByTagName("button")[0];
-        let resetButton = myItem.getElementsByTagName("button")[1];
-        myItem.fImg = theme.fImg[i];
-        myItem.bImg = theme.bImg[i];
-        displayImg.src = myItem.fImg;
-        button.classList.remove("disabled");
-        resetButton.classList.add("disabled");
-        button.addEventListener(
-            'click', 
-            function(){
-                displayImg.src = myItem.bImg;
-                button.classList.add("disabled");
-                resetButton.classList.remove("disabled");
-            }
-        )
-        resetButton.addEventListener(
-            'click',
-            function(){
-                displayImg.src = myItem.fImg;
-                button.classList.remove("disabled");
-                resetButton.classList.add("disabled");
-            }
-        )
+
+
+function clearNode(node){
+    while(node.hasChildNodes()){
+        node.removeChild(node.firstChild);
     }
 }
-// function addTheme(){
-//     const new_GTI = document.getElementById("inputThemeGoodIcon").value;
-//     const new_BTI = document.getElementById("inputThemeBadIcon").value;
-//     const newTitle = document.getElementById("inputTitle").value;
-//     let newTheme_front_images = [];
-//     let newTheme_back_images = [];
-//     newTheme_front_images.push(document.getElementById("inputFI1").value);
-//     newTheme_back_images.push(document.getElementById("inputBI1").value);
-//     var newTheme = new Theme(newTheme_front_images ,newTheme_back_images , newTitle , new_GTI,new_BTI);
-//     var parent = document.getElementsByClassName("themeIconContainer")[0];
-//     var div = document.createElement("div");
-//     var img = document.createFlement("img");
-//     　　　　//設定 div 屬性，如 id
-//     　　　　div.setAttribute("class", "ThemeItem");
-//     　　　　div.innerHTML = "js 動態新增div";
-//     　　　　parent.appendChild(div);
-// }
+
+
+
+
+
+function addItem(){
+    //const new_GTI = document.getElementById("inputThemeGoodIcon").value;
+    //const new_BTI = document.getElementById("inputThemeBadIcon").value;
+    //const newTitle = document.getElementById("inputTitle").value;
+    cur_Theme.fImg.push(document.getElementById("inputFI").value);
+    cur_Theme.bImg.push(document.getElementById("inputBI").value);
+    cur_Theme.itemCnt++;
+    curItemCnt++;
+    //var newTheme = new Theme(newTheme_front_images ,newTheme_back_images , newTitle , new_GTI,new_BTI);
+    let itemContainerNode = document.getElementById("itemContainer");
+    let itemNode = new Item(cur_Theme , cur_Theme.fImg.length - 1).ItemNode;
+    itemContainerNode.appendChild(itemNode);
+    setAnnotation();
+    clean();
+}
+function clean(){
+    document.getElementById("inputFI").innerHTML='';
+    document.getElementById("inputBI").innerHTML='';
+}
+
+
+
+
+
+
 
 

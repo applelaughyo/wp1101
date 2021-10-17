@@ -3,7 +3,7 @@ body {
     box-sizing: border-box;
     background: #f8f1e5;
 }
-.themeContainer{
+#themeContainer{
     position:fixed;
     top:0px;
     left:0px;
@@ -17,7 +17,7 @@ body {
     text-align:center;
     z-index: 2;
 }
-.themeIconContainer{
+#themeIconContainer{
     width: 120px;
     height: 300px;
     display: flex;
@@ -26,7 +26,7 @@ body {
     background-color:rgb(255, 192, 203,0.8);
     overflow-y:auto;
 }
-.themeContainer p{
+#themeContainer p{
     color: #000000;
     font-size:30px;
     font-weight: 600;
@@ -64,7 +64,7 @@ body {
 
 
 
-.container {
+#container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -75,7 +75,7 @@ body {
     align-items: center;
 
 }
-.myTitle{
+#myTitle{
     /* position:sticky;
     top:0px; */
     width: 1000px;
@@ -84,16 +84,16 @@ body {
     border:3px #000000 solid;
     float:inline-start;
     text-align:center;
-    z-index: 2;
 }
-.myTitle p{
+#myTitle p{
     color: #000000;
     font-size:40px;
     font-weight: 800;
     -webkit-text-stroke: 3px black;
     -webkit-text-fill-color: transparent;
 }
-.itemContainer{
+#itemContainer{
+    width: 1000px;
     flex-direction: row;
     flex-wrap: wrap;
     background-color: hsl(135, 68%, 35% , 0.5);
@@ -140,6 +140,10 @@ body {
 .photo:hover{
     transform:scale(1.2,1.2);
 }
+
+
+
+
 .disabled {
     opacity: 0.2;
 }
@@ -149,22 +153,40 @@ body {
     cursor: not-allowed;
 }
 
-.annotation{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#annotation{
     position:fixed;
     flex-direction: row;
     flex-wrap: wrap;
     bottom:0px;
     left:0px;
-    width: 100px;
+    width: 150px;
     height: 100px;
     display: flex;
     background-color: black;
     border:double gold;
-    text-align:center;
+    text-align:left;
     z-index: 2;
 }
-.annotation p{
+#annotation p{
     color: white;
-    font-size:15px;
+    font-size:10px;
     font-weight: 500;
 }
