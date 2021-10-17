@@ -46,22 +46,23 @@ const IAmTrash_back_images = ["IAmTrash/你也爛.jpg",
                                 "IAmTrash/我不知道該說什麼了.png",
                                 "IAmTrash/我就沒梗.png"]
 
-const itemCnt = 6;
+
 const themeCnt = 3;
 
 
 
 
-function Theme(front_images , back_images , title , GTI ,BTI){
+function Theme(front_images , back_images , title , GTI ,BTI , itemCnt){
     this.fImg = front_images;
     this.bImg = back_images;
     this.title = title;
     this.GTI = GTI;
     this.BTI = BTI;
+    this.itemCnt = itemCnt;
 }
-var spongeBob = new Theme(SB_front_images ,SB_back_images , SB_title , SB_GTI,SB_BTI);
-var dog = new Theme(Dog_front_images , Dog_back_images , Dog_title,Dog_GTI,Dog_BTI);
-var iAmTrash = new Theme(IAmTrash_front_images, IAmTrash_back_images , IAmTrash_title,IAmTrash_GTI , IAmTrash_BTI);
+var spongeBob = new Theme(SB_front_images ,SB_back_images , SB_title , SB_GTI,SB_BTI , SB_front_images.length);
+var dog = new Theme(Dog_front_images , Dog_back_images , Dog_title,Dog_GTI, Dog_BTI, Dog_front_images.length);
+var iAmTrash = new Theme(IAmTrash_front_images, IAmTrash_back_images , IAmTrash_title,IAmTrash_GTI , IAmTrash_BTI ,IAmTrash_front_images.length);
 var myThemeArray =[spongeBob , dog , iAmTrash];
 
 
@@ -103,7 +104,7 @@ function setTitle(theme){
     myTitleP.innerHTML = theme.title;
 }
 function setItem(theme){
-    for(i=0;i<itemCnt;i++){
+    for(i=0;i<theme.itemCnt;i++){
         let myItem = document.getElementsByClassName("item")[i];
         let displayImg = myItem.getElementsByTagName("img")[0];
         let button = myItem.getElementsByTagName("button")[0];
@@ -131,5 +132,22 @@ function setItem(theme){
         )
     }
 }
+// function addTheme(){
+//     const new_GTI = document.getElementById("inputThemeGoodIcon").value;
+//     const new_BTI = document.getElementById("inputThemeBadIcon").value;
+//     const newTitle = document.getElementById("inputTitle").value;
+//     let newTheme_front_images = [];
+//     let newTheme_back_images = [];
+//     newTheme_front_images.push(document.getElementById("inputFI1").value);
+//     newTheme_back_images.push(document.getElementById("inputBI1").value);
+//     var newTheme = new Theme(newTheme_front_images ,newTheme_back_images , newTitle , new_GTI,new_BTI);
+//     var parent = document.getElementsByClassName("themeIconContainer")[0];
+//     var div = document.createElement("div");
+//     var img = document.createFlement("img");
+//     　　　　//設定 div 屬性，如 id
+//     　　　　div.setAttribute("class", "ThemeItem");
+//     　　　　div.innerHTML = "js 動態新增div";
+//     　　　　parent.appendChild(div);
+// }
 
 
