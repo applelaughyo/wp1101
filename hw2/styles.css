@@ -1,7 +1,7 @@
 body {
     height: 100%;
     box-sizing: border-box;
-    background: #f8f1e5;
+    background:hsla(41, 82%, 37%, 0.5);
 }
 #themeContainer{
     position:fixed;
@@ -66,6 +66,7 @@ body {
 
 #container {
     display: flex;
+    width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
     background-color: hsla(41, 82%, 37%, 0.5);
