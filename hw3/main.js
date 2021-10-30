@@ -153,7 +153,6 @@ function setFooter(){
     else{
         cleanBtn.style.display = "flex";
     }
-
 }
 function fliter(activeStatus , completedStatus){
     let activeArray = document.getElementsByClassName("todo-app__active");
