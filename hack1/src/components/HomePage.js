@@ -28,13 +28,13 @@ const HomePage = ({startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum
                 <div className = "controlPanel">
                   <div className = "controlCol" >
                     <p className = "controlTitle" >Mines Number</p>
-                    <input type='range' step = '1' min = '…' max = '…' defaultValue = '…' />
-                    <p className = "controlNum" >10</p>
+                    <input type='range' step = '1' min = '…' max = '…' defaultValue = '…' onChange = {mineNumOnChange}/>
+                    <p className = "controlNum" >{mineNum}</p>
                   </div>
                   <div className = "controlCol" >
                     <p className = "controlTitle" >Board Size(n&times;n)</p>
-                    <input type='range' step = '1' min = '…' max = '…' defaultValue = '…' />
-                    <p className = "controlNum" >3</p>
+                    <input type='range' step = '1' min = '…' max = '…' defaultValue = '…' onChange = {boardSizeOnChange}/>
+                    <p className = "controlNum" >{boardSize}</p>
                   </div>
                 </div>
               </div>

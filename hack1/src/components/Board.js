@@ -31,13 +31,14 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     // Creating a board
     const freshBoard = () => {
         createBoard(boardSize,mineNum);
-        restartGame();
+        
         {/* -- TODO 3-1 -- */}
         {/* Useful Hint: createBoard(...) */}
         
     }
 
     const restartGame = () => {
+        
         {/* -- TODO 5-2 -- */}
         {/* Useful Hint: freshBoard() */}
         
@@ -68,6 +69,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
             <div className = 'boardWrapper' >
             <h1>This is the board Page!</h1>  {/* This line of code is just for testing. Please delete it if you finish this function. */}
             {/* -- TODO 3-1 -- */}
+            <Modal restartGame={restartGame} backToHome ={backToHome} win = {win}/>
             {/* Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.  */}
             {/* Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */}
             

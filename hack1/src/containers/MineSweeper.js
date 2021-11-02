@@ -10,7 +10,6 @@ import React, { useState } from 'react';
 import './MineSweeper.css';
 import Board from '../components/Board'
 import HomePage from '../components/HomePage'
-import { set } from 'cypress/types/lodash';
 
 const MineSweeper = () => {
     const [startGame, setStartGame] = useState(false);      // A boolean variable. If true, show the Board, else show the HomePage.
@@ -23,12 +22,12 @@ const MineSweeper = () => {
         setStartGame(true);
     }
     {/* -- TODO 6-2 -- */}
-    const mineNumOnChange = () => {
-        
+    const mineNumOnChange = (e) => {
+        setMineNum(e.target.value);
     }
     {/* -- TODO 6-2 -- */}
-    const boardSizeOnChange = () => {
-        
+    const boardSizeOnChange = (e) => {
+        setBoardSize(e.target.value);
     }
     {/* -- TODO 5-2 -- */}
     const backToHomeOnClick = () => {
@@ -39,7 +38,13 @@ const MineSweeper = () => {
 
     return( 
         <div className='mineSweeper'>
-            {startGame === false ? <HomePage startGameOnClick = {startGameOnClick}/>:<Board boardSize = {boardSize} mineNum = {mineNum} backToHome = {backToHomeOnClick}/>}
+            {startGame === false ? <HomePage    startGameOnClick = {startGameOnClick} 
+                                                mineNumOnChange = {mineNumOnChange}
+                                                boardSizeOnChange ={boardSizeOnChange} 
+                                                mineNum ={mineNum} 
+                                                boardSize = {boardSize}/>
+                                    :
+                                    <Board boardSize = {boardSize} mineNum = {mineNum} backToHome = {backToHomeOnClick}/>}
             {/* Useful Hint: If ... <HomePage startGameOnClick = {startGameOnClick} .../> else <Board .../> */}
             {/* Reminder: You can refer to the structure file in p.6 of Hack1.pdf. */}
              
