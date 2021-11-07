@@ -1,3 +1,7 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+body{
+    font-family:'Noto Sans TC', sans-serif;
+} 
 .calculator-app__root {
     margin: 0 auto;
     /* margin-top: 7em; */
@@ -7,9 +11,8 @@
     justify-content: flex-start;
     align-items: center;
     padding: 1em;
-    color: #745454;
     font-weight: 300;
-    background-color: #FFFFBF;
+    background-color: 	#FFF0D4;
 }
 
 
@@ -25,15 +28,16 @@
     display: flex;
     flex-direction: column;
     width: 80%;
-    background-color: #78FFFF;
 }
 .calculator-app__machine_screen{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
     height: 100px;
-    background-color: #BFBFBF;
-    outline:solid black;
+    background-color: rgba(175, 47, 47, 0.15);
     padding: 0px 10px 0px;
+    font-size: 30px;
 }
 
 .calculator-app__machine_body{
@@ -43,40 +47,45 @@
     align-items: center;
     height: 80%;
     padding: 1em;
-    outline:solid black;
+    background-color: #FFE8BF;
 }
 .calculator-app__machine_number{
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    width: 75%;
-    outline:solid black;
+    height: 600px;
+    width: 60%;
 }
 .calculator-app__machine_number button{
     text-align: center;
     width: 100px;
     height: 100px;
-    color: #DBABFF;
+    color: #FFCC6E;
     border-radius: 50%;
     margin: 10px;
     font-size: 50px;
+
+    border: transparent;
 }
 .calculator-app__machine_operator{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     width: 25%;
-    outline:solid black;
-    margin-left: 5px;
+    height: 600px;
+    margin-left: 20px;
 }
 .calculator-app__machine_operator button{
-    width: 100%;
-    height: 100px;
-    font-size: 50px;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
     text-align: center;
-    color: #DBABFF;
-    margin: 10px 0px 10px;
+    color: #FFCC6E;
+    border: transparent;
+    margin: 10px;
 }
 .calculator-app__machine_body button:hover{
     outline: blueviolet;
