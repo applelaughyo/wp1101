@@ -1,3 +1,4 @@
+
 /****************************************************************************
   FileName      [ HomePage.js ]
   PackageName   [ src/components ]
@@ -15,23 +16,7 @@ const HomePage = ({startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum
     const [error, setError] = useState(false);              // A boolean variable. If true, means that the numbers of mines and the board size are invalid to build a game.
 
     {/* Some functions may be added here! */}
-    function handleError(mineNum , boardSize){
-      if(mineNum >= boardSize*boardSize){
-        setError(true);
-      }
-      else{
-        setError(false);
-      }
-    }
-    // handleError(mineNum,boardSize);
-    // function handleShow(){
-    //   if(error === true){
-    //     setShowPanel(true);
-    //   }
-    //   else{
-    //     setShowPanel(false);
-    //   }
-    // }
+    
 
     return(
       <div className = 'HomeWrapper'>
@@ -45,12 +30,12 @@ const HomePage = ({startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum
                   <div className = "controlCol" >
                     <p className = "controlTitle" >Mines Number</p>
                     <input type='range' step = '1' min = '…' max = '…' defaultValue = '…' onChange = {mineNumOnChange}/>
-                    <p className = "controlNum" color = { error ? '#880000': '#0f0f4b'}>{mineNum}</p>
+                    <p className = "controlNum" >{mineNum}</p>
                   </div>
                   <div className = "controlCol" >
                     <p className = "controlTitle" >Board Size(n&times;n)</p>
                     <input type='range' step = '1' min = '…' max = '…' defaultValue = '…' onChange = {boardSizeOnChange}/>
-                    <p className = "controlNum" color = { error ? '#880000': '#0f0f4b'}>{boardSize}</p>
+                    <p className = "controlNum" >{boardSize}</p>
                   </div>
                 </div>
               </div>
@@ -65,4 +50,7 @@ const HomePage = ({startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum
     );
 
 }
-export default HomePage;   
+export default HomePage; 
+
+
+
