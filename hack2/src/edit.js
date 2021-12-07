@@ -13,17 +13,22 @@ function Edit(props) {
   const handleSubmit = async() => {
     let postId = uuidv4();
     let timestamp = new Date();
-    const {
-      data: {message},
-    } = await instance.post('/newPost',{
-      postId,
-      title,
-      content,
-      timestamp
-    });
-    setTimeout(() => {
-      props.navigate(-1);
-    }, 300)
+    if(!title || !content){
+
+    }
+    else{
+      const {
+        data: {message},
+      } = await instance.post('/newPost',{
+        postId,
+        title,
+        content,
+        timestamp
+      });
+      setTimeout(() => {
+        props.navigate(-1);
+      }, 300)
+    }
     //console.log(message);
   }
   const handleTitleOnchange = (e) => {
