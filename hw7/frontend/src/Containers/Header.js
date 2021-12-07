@@ -16,7 +16,7 @@ const Wrapper = styled.section`
 `;
 
 const Header = () => {
-  const {clearMessage } =
+  const {clearMessage,clearTableMessages } =
     useScoreCard();
 
   const handleClear = async () => {
@@ -24,6 +24,7 @@ const Header = () => {
       data: { message },
     } = await axios.delete('/api/clear-db');
     clearMessage(message);
+    clearTableMessages();
   };
 
   return (

@@ -45,8 +45,7 @@ const queryName = async(name)=>{
     throw new Error("query failed");
   }
   else{
-    const messages = query.map((m)=>{ return ('('+ m.name + ',' + m.subject + ',' + m.score + ')')});
-    return(messages);
+    return(query);
   }
 }
 const querySubject = async(subject)=>{
@@ -55,8 +54,7 @@ const querySubject = async(subject)=>{
     throw new Error("query failed");
   }
   else{
-    const messages = query.map((m)=>{ return ('('+ m.name + ',' + m.subject + ',' + m.score + ')')});
-    return(messages);
+    return(query);
   }
 }
 
