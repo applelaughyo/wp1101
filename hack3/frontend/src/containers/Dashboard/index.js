@@ -82,15 +82,17 @@ export default function Dashboard() {
       document: TASK_DELETED_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
-        const {
-          data: { taskDeleted },
-        } = subscriptionData;
+        const taskDeleted = subscriptionData.data.taskDeleted;
         return {
           tasks: prev.tasks.map((task) => {
-            if (task.id === taskDeleted) return;
-            return {
-              ...task,
-            };
+            if (task.id === taskDeleted){
+              
+            }
+            else{
+              return {
+                ...task,
+              };
+            }
           }),
         };
       },
