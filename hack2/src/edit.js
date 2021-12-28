@@ -14,7 +14,7 @@ function Edit(props) {
     let postId = uuidv4();
     let timestamp = new Date();
     if(!title || !content){
-
+      
     }
     else{
       const {

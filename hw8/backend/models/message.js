@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 // Creating a schema, sort of like working with an ORM
 const MessageSchema = new Schema({
   name: {
