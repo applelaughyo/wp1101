@@ -9,7 +9,7 @@ export const UPDATE_TASK_MUTATION = gql`
       dueDate
       status
     }
-  }
+  } 
 `;
 
 
