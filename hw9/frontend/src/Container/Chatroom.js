@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useMutation} from "@apollo/client";
-import {CREATE_CHATBOX_MUTATION ,CREATE_MESSAGE_MUTATION} from '../graphql';
+import {CREATE_MESSAGE_MUTATION} from '../graphql';
 import { Button, Input, Tabs} from 'antd';
 import styled from "styled-components";
 import Title from "../Component/Title";
@@ -12,19 +12,26 @@ import useChatBox from '../Hook/useChatBox'
 const Wrapper = styled(Tabs)`
     width:100%;
     height:300px;
-    background" #eeeeee52;
     border-radius: 10px;
     margin: 20px;
     display: flex;
+`;
+const Body = styled.div`
+    width:80%;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
 `;
 
 
 const ChatRoom = ({me , displayStatus}) => {
     const [messageInput, setMessageInput] = useState("");
     const [activeKey, setActiveKey] = useState("");
-    const { Chatboxes , createChatBox, removeChatBox} = useChatBox();
+    const { chatBoxes , removeChatBox} = useChatBox();
     const [modalVisible , setModalVisible] = useState(false);
-    const [startChat] = useMutation(CREATE_CHATBOX_MUTATION);
     const [sendMessage] = useMutation(CREATE_MESSAGE_MUTATION);
     const addChatBox = ()=>{
         setModalVisible(true);
@@ -34,7 +41,6 @@ const ChatRoom = ({me , displayStatus}) => {
             <Title>
                 <H1>{me}'s Chat Room</H1>
                 <Button type="primary" danger>
-                    {" "}
                     Clear
                 </Button>
             </Title>
@@ -47,35 +53,25 @@ const ChatRoom = ({me , displayStatus}) => {
                         setActiveKey(key);
                     }}
                     onEdit={(targetKey,action) => {
-                        if (action === "add") 
-                            addChatBox;
+                        if (action === "add"){
+                            addChatBox();
+                        } 
                         else if(action === "remove"){
                             setActiveKey(removeChatBox(targetKey,activeKey));
                         }
                     }}
                 >
-                    {Chatboxes.map((friend) =>(
+                    {chatBoxes.map((friend) =>(
                         <Tabs.TabPane tab={friend} closable = {true} key = {friend} onClose = {removeChatBox}>
                             <ChatBox me={me} friend ={friend} key={friend}></ChatBox>
                         </Tabs.TabPane>
                     ))}
-
                 </Wrapper>
                 <ChatModal
-                    visible={modalVisible}
-                    onCreate ={async(name)=>{
-                        await startChat({
-                            variables:{
-                                name1:me,
-                                name2:name,
-                            },
-                        });
-                        setActiveKey(createChatBox(name));
-                        setModalVisible(false);
-                    }}
-                    onCancel ={()=>{
-                        setModalVisible(false);
-                    }}
+                    visible = {modalVisible}
+                    me = {me}
+                    setActiveKey = {setActiveKey}
+                    setModalVisible = {setModalVisible}
                 />
             </>
             <Input.Search
@@ -96,6 +92,7 @@ const ChatRoom = ({me , displayStatus}) => {
                 }}
             />
         </>
+        
     )
 }
 

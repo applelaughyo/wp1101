@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import {Input} from 'antd';
-
-
+import { useState } from "react";
+import {Input,Modal} from 'antd';
+import {useMutation} from "@apollo/client";
+import {CREATE_CHATBOX_MUTATION} from '../graphql'
+import useChatBox from '../Hook/useChatBox'
 
 
 
@@ -15,51 +17,37 @@ const Wrapper = styled.section`
     align-items: center;
     background-color: #B87800;
 `;
-const Title =styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-const Div = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
 
 
 
 
-const ChatModal = ()=>{
-
-
-
-
+const ChatModal = ({visible , me, setActiveKey , setModalVisible})=>{
+    const [friendName , setFriendName] = useState("");
+    const {createChatBox} = useChatBox();
+    const [startChat] = useMutation(CREATE_CHATBOX_MUTATION);
     return(
-        <Wrapper>
-            <Title>createChatBox</Title>
-            <Div>
-                <Input.Search 
-                    value={messageInput}
-                    onChange={(e) => setMessageInput(e.target.value)}
-                    enterButton="Send"
-                    placeholder="Enter message here..."
-                    onSearch={(msg)=>{
-                        if(!msg){
-                            displayStatus({
-                                type: "error",
-                                msg: "Please enter message."
-                            });
-                            return;
-                        }
-                        sendMessage({name:me,body:msg});
-                        setMessageInput("");
-                    }}
-                />
-            </Div>
-            <Div>
-
-            </Div>
-        </Wrapper>
+        <Modal
+            title="CreateChatBox"
+            visible={visible}
+            onOk = {async()=>{
+                await startChat({
+                    variables:{
+                        name1:me,
+                        name2:friendName,
+                    },
+                });
+                setActiveKey(createChatBox(friendName));
+                setModalVisible(false);
+            }}
+            onCancel={setModalVisible(false)}
+            okText="create"
+            cancelText="cancel"
+        >
+            <Input 
+                placeholder="Name"
+                onChange={(e) => setFriendName(e.target.value)} 
+            />
+        </Modal>
     )
 }
 export default ChatModal;

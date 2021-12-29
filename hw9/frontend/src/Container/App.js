@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
 // import useChat from '../Hook/useChat';
-import ChatRoom from './Chatroom';
+import ChatRoom from './ChatRoom';
 import SignIn from './Signin';
 import styled from 'styled-components';
 const AppDiv = styled.div`

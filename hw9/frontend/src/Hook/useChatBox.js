@@ -15,7 +15,7 @@ const useChatBox = () => {
     }
     const removeChatBox = (targetKey , activeKey) =>{
         const index = chatBoxes.indexOf(activeKey);
-        const newChatBoxes = chatBoxes.filter((name) =>{name !== targetKey});
+        const newChatBoxes = chatBoxes.filter((name) =>{return (name !== targetKey)});
         setChatBoxes(newChatBoxes);
         return activeKey
             ?activeKey === targetKey

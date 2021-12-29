@@ -1,6 +1,6 @@
 type Query {
   user(userName: String): User!
-  chatBox(chatBoxName: String): ChatBox!
+  chatBox(chatBoxName: String!): ChatBox!
 }
 type Mutation{
   createChatBox(name1: String!,name2: String!): ChatBox!
