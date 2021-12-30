@@ -1,8 +1,9 @@
 import {gql} from '@apollo/client';
 export const MESSAGE_SUBCRIPTION = gql`
-    subscription message($chatBoxName: String!){
+    subscription SubscribeChatBox($chatBoxName: String!){
         message(chatBoxName:$chatBoxName){
-            message{
+            mutation
+            data{
                 sender{
                     name
                 }

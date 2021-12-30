@@ -8,8 +8,9 @@ const makeName = (name1 , name2)=>{
 }
 const Messages = styled.div`
     height:calc(240px - 36px)
+    width:100%;
     display:flex;
-    dlex-direction:column;
+    flex-direction:column;
     overflow: auto;
 `;
 
@@ -36,7 +37,6 @@ const ChatBox=({me,friend}) =>{
                     if(!subscriptionData.data)
                         return prev;
                     const newMessage = subscriptionData.data.message.data;
-                    console.log(prev);
                     return {
                         chatBox:{
                             messages:[...prev.chatBox.messages,newMessage],
