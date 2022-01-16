@@ -1,0 +1,117 @@
+.board-container {
+    width: 90%;
+    border-width:0.5px;
+    border-style: ridge;
+    border-color:orange;
+    margin-top: 120px;
+    background-color: white;
+}
+
+.request-post {
+    width: 100%;
+    border-bottom: 0.5px;
+    border-bottom-style: dashed;
+    border-bottom-color: orange;
+    display: flex;
+    height: 200px;
+    align-items: center;
+    font-size: 30px;
+}
+
+.nameBar {
+    font-size: 25px;
+    border-bottom: 0.5px;
+    border-bottom-style: dashed;
+    border-bottom-color: orange;
+    
+}
+
+.name {
+    margin-left: 1%;
+    width: 9%;
+    text-align: center;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+   
+    
+}
+
+.code {
+    display: inline-block;
+    margin-left: 3.5%;
+    width: 9%;
+    text-align: center;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}    
+
+.number {
+    display: inline-block;
+    margin-left: 5%;
+    width: 9%;
+    text-align: center;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    
+}
+
+.people {
+    margin-left: 53%;
+    text-align: center;
+}
+
+.className {
+    margin-left: 1%;
+    width: 9%;
+    text-align: center;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.classCode {
+    margin-left: 3.5%;
+    width: 9%;
+    text-align: center;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.classNumber {
+    margin-left: 5%;
+    width: 9%;
+    text-align: center;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cc {
+    margin-left: 5%;
+    width: 40%;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.classPeople {
+    margin-left: 8.5%;
+    text-align: center;
+}
+
+
+
